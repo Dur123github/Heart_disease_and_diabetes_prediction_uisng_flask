@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0px;
+            padding: 0px;
+            background: url('/static/images/heart.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-size: 100% 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ccc;
+            font-size: 31px;
+            margin-bottom: -18px;
+        }
+
+        form {
+
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        
+        }
+        .form-container{
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 20px;
+            border-radius: 10px;
+           
+            
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            color:white;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+
+        input[type="number"] {
+            width: 50%;
+            padding: 8px;
+            margin-top: 3px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            border: 2px solid black;
+        }
+
+        button {
+            padding: 10px 30px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 100px;
+        
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+        .desc ul{
+            color: white;
+        }
+        h2{
+            color: white;
+            font-size: bold;
+        }
+        
+
+    </style>
+</head>
+
+<body>
+    <h1>Heart Disease Prediction</h1>
+    <div class="desc">
+        <p>
+            <h2>Description</h2>
+        <ul>
+            <li><b>Gender (M/F)</b>: Male or Female</li><br>
+            <li><b>Chest Pain Type</b>: ATA, NAP, ASY, ST(ATA=Type0,NAP=Type1,ASY=Type2,ST=Type3)</li><br>
+            <li><b>Resting Blood Pressure</b>: Measured in mm Hg</li><br>
+            <li><b>Cholesterol Level</b>: Serum cholesterol in mg/dL</li><br>
+            <li><b>Fasting Blood Sugar</b>: 1 if > 120 mg/dL, else 0</li><br>
+            <li><b>Resting ECG</b>: Normal, ST, or other abnormalities(Normal=Type0,ST=Type=1,other=Type2)</li><br>
+            <li><b>Max Heart Rate</b>: Maximum heart rate achieved</li><br>
+            <li><b>Exercise-Induced Angina</b>: Y = Yes, N = No</li><br>
+            <li><b>ST Depression</b>: Depression during exercise</li><br>
+            <li><b>Slope of ST Segment</b>: Up, Flat, Down</li><br>
+            <li><b>Heart Disease</b>: 1 = Present, 0 = Absent</li><br>
+        </ul>
+       
+        </p>
+    </div>
+    <div class="form-container">
+
+
+        <form action="/predict" method="post">
+            <label>Age: <input type="number" name="Age" required></label><br>
+            <label>Sex:
+                <select name="Sex" required>
+                    <option value="0">Female</option>
+                    <option value="1">Male</option>
+                </select>
+            </label><br>
+            <label>Chest Pain Type:
+                <select name="ChestPainType" required>
+                    <option value="0">Type 0</option>
+                    <option value="1">Type 1</option>
+                    <option value="2">Type 2</option>
+                    <option value="3">Type 3</option>
+                </select>
+            </label><br>
+            <label>Resting BP: <input type="number" name="RestingBP" required></label><br>
+            <label>Cholesterol: <input type="number" name="Cholesterol" required></label><br>
+            <label>Fasting Blood Sugar:
+                <select name="FastingBS" required>
+                    <option value="0">Less than 120 mg/dL</option>
+                    <option value="1">Greater than 120 mg/dL</option>
+                </select>
+            </label><br>
+            <label>Resting ECG:
+                <select name="RestingECG" required>
+                    <option value="0">Type 0</option>
+                    <option value="1">Type 1</option>
+                    <option value="2">Type 2</option>
+                </select>
+            </label><br>
+            <label>Max HR: <input type="number" name="MaxHR" required></label><br>
+            <label>Exercise Angina:
+                <select name="ExerciseAngina" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </label><br>
+            <label>Oldpeak: <input type="number" step="0.1" name="Oldpeak" required></label><br>
+            <label>ST Slope:
+                <select name="ST_Slope" required>
+                    <option value="0">Type 0</option>
+                    <option value="1">Type 1</option>
+                    <option value="2">Type 2</option>
+                </select>
+            </label><br>
+            <button type="submit">Predict Heart Disease</button>
+        </form>
+
+        <div id="result" class="result"></div>
+        <div id="care" class="care" style="display: none;"></div>
+    </div>
+
+</body>
+
+</html>

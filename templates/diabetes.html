@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Diabetes Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0px;
+            padding: 0px;
+            background: url('/static/images/diabtes1.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-size: 100% 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: rgb(17, 17, 17);
+            font-size: 40spx;
+            margin-bottom: -18px;
+        }
+
+        .desc ul {
+            color: rgb(12, 1, 1);
+        }
+
+        h2 {
+            color: rgb(5, 0, 0);
+            font-size: bold;
+        }
+
+        form {
+
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+
+        }
+
+        .form-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            width: 30%;
+
+
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            color: rgb(12, 12, 12);
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+
+        input[type="number"] {
+            width: 30%;
+            padding: 8px;
+            margin-top: 3px;
+            margin-bottom: 15px;
+            border: 1px solid #141414;
+            border-radius: 5px;
+            border: 2px solid black;
+        }
+
+        button {
+            padding: 10px 30px;
+            background-color: #007bff;
+            color: rgb(7, 7, 7);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 100px;
+
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+
+<body>
+    <h1>Diabetes Prediction</h1>
+    <p>The following features are used in diabetes prediction models:
+    <h2>Description</h2>
+    <div class="desc">
+        <p>The following features are used in diabetes prediction models:
+        <ul>
+
+            <li><b>Pregnancies</b>: Number of times a woman has been pregnant</li><br>
+            <li><b>Glucose</b>: Plasma glucose concentration (mg/dL) from an oral glucose tolerance test</li><br>
+            <li><b>Blood Pressure</b>: Diastolic blood pressure (mm Hg)</li><br>
+            <li><b>Skin Thickness</b>: Triceps skinfold thickness (mm), used to estimate body fat</li><br>
+            <li><b>Insulin</b>: 2-hour serum insulin (μU/ml), an indicator of pancreatic function</li><br>
+            <li><b>BMI</b>: Body Mass Index (BMI), a measure of body fat (weight in kg / height in m²)</li><br>
+            <li><b>Diabetes Pedigree Function</b>: A function that scores the likelihood of diabetes based on family
+                history</li><br>
+            <li><b>Age</b>: Age of the individual in years</li><br>
+            <li><b>Diabetes</b>: 1 = Present, 0 = Absent</li><br>
+        </ul>
+        </p>
+    </div>
+    <div class="form-container">
+        <form action="/diabetesPredict" method="post">
+            <label>Pregnancies: <input type="number" name="pregnancie" required></label><br>
+            <label>Glucose: <input type="number" name="glucose" required></label><br>
+            <label>Blood Pressure: <input type="number" name="bloodpressure" required></label><br>
+            <label>Skin Thickness: <input type="number" name="skinthickness" required></label><br>
+            <label>Insulin: <input type="number" name="insulin" required></label><br>
+            <label>BMI: <input type="number"  step="any"  name="bmi" required></label><br>
+            <label>Diabetes Pedigree Function: <input type="number"  step="any" name="diabetespedigreefunction"required></label><br>
+            <label>Age: <input type="number" name="age" required></label><br>
+            <button type="submit">Predict Diabetes</button>
+        </form>
+
+        <div id="result" class="result"></div>
+        <div id="care" class="care" style="display: none;"></div>
+    </div>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
